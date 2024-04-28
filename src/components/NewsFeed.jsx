@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import CardElement from "./CardElement";
 
 const NewsFeed = ({ newsList }) => {
@@ -6,7 +7,13 @@ const NewsFeed = ({ newsList }) => {
       <h1 className="text-center">
         Latest <span className="badge text-white bg-danger">News</span>{" "}
       </h1>
-      <CardElement newsList={newsList} />
+      {newsList?.length === 0 ? (
+        <Container>
+          <h1>No news available</h1>
+        </Container>
+      ) : (
+        <CardElement newsList={newsList} />
+      )}
     </div>
   );
 };

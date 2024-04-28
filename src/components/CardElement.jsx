@@ -3,7 +3,7 @@ import DefaultNewsImage from "../assets/news.jpg";
 
 const CardElement = ({ newsList }) => {
   return (
-    <div className="d-flex gap-2 flex-wrap m-4 justify-content-between">
+    <div className="d-flex gap-2 flex-wrap m-4 justify-content-left">
       {newsList.map((news, idx) =>
         news.title && news.description && news.urlToImage && news.url ? (
           <div key={idx} className="d-flex justify-content-wrap">

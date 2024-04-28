@@ -5,24 +5,27 @@ import NewsFeed from "./components/NewsFeed";
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("");
-  console.log(activeCategory);
-
+  const [loading, setLoading] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("general");
+  const [selectedCountry, setSelectedCountry] = useState("in");
   useEffect(() => {
     (async () => {
-      const data = await fetchNews(activeCategory);
+      setLoading(true);
+      const data = await fetchNews(activeCategory, selectedCountry);
       setNewsList(data);
+      setLoading(false);
     })();
-  }, [activeCategory]);
-  console.log(newsList);
+  }, [activeCategory, selectedCountry]);
 
   return (
     <div>
       <Navbar
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
+        selectedCountry={selectedCountry}
+        setSelectedCountry={setSelectedCountry}
       />
-      <NewsFeed newsList={newsList} />
+      {loading ? <h1>Loading...</h1> : <NewsFeed newsList={newsList} />}
     </div>
   );
 };

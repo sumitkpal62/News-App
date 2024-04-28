@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = 'https://newsapi.org/v2/top-headlines';
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
-export const fetchNews = async (category = 'business', country = 'us') => {
+export const fetchNews = async (category = 'business', country = 'in') => {
   // Update the params object with the new category and country
   const params = {
     'apiKey': API_KEY,
