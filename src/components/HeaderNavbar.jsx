@@ -1,9 +1,7 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { categories } from "../utils/constant";
 
-const HeaderNavbar = () => {
-  // const [activeCategory, setActiveCategory] = useState("");
-
+const HeaderNavbar = ({ activeCategory, setActiveCategory }) => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
       <Navbar.Brand href="/" className="px-4">
@@ -13,11 +11,15 @@ const HeaderNavbar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav
           className="me-auto"
-          defaultActiveKey={"#business"}
+          defaultActiveKey={"#{activeCategory}"}
           variant={"pills"}
         >
           {categories.map((category) => (
-            <Nav.Link key={category} href={`#${category}`}>
+            <Nav.Link
+              key={category}
+              href={`#${category}`}
+              onClick={() => setActiveCategory(category)}
+            >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </Nav.Link>
           ))}

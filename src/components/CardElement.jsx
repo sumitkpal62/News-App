@@ -2,7 +2,6 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import DefaultNewsImage from "../assets/news.jpg";
 
 const CardElement = ({ newsList }) => {
-  console.log(newsList);
   return (
     <div className="d-flex gap-2 flex-wrap m-4 justify-content-between">
       {newsList.map((news, idx) =>

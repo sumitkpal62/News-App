@@ -4,26 +4,25 @@ import Navbar from "./components/HeaderNavbar";
 import NewsFeed from "./components/NewsFeed";
 
 const App = () => {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [newsList, setNewsList] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("");
+  console.log(activeCategory);
 
   useEffect(() => {
-    fetchNews()
-      .then((response) => {
-        setNews(response.data.articles);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  console.log(news);
+    (async () => {
+      const data = await fetchNews(activeCategory);
+      setNewsList(data);
+    })();
+  }, [activeCategory]);
+  console.log(newsList);
 
   return (
     <div>
-      <Navbar />
-      <NewsFeed />
+      <Navbar
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
+      <NewsFeed newsList={newsList} />
     </div>
   );
 };
