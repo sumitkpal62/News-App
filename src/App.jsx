@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchNews } from "./utils/api";
 import Navbar from "./components/HeaderNavbar";
 import NewsFeed from "./components/NewsFeed";
+import { Spinner } from "react-bootstrap";
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
@@ -25,7 +26,19 @@ const App = () => {
         selectedCountry={selectedCountry}
         setSelectedCountry={setSelectedCountry}
       />
-      {loading ? <h1>Loading...</h1> : <NewsFeed newsList={newsList} />}
+      {loading ? (
+        <div
+          className="d-flex justify-content-center align-items-center gap-4"
+          style={{ height: "90vh" }}
+        >
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          <h2>Loading...</h2>
+        </div>
+      ) : (
+        <NewsFeed newsList={newsList} />
+      )}
     </div>
   );
 };

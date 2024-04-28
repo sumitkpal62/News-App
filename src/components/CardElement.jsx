@@ -1,12 +1,12 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import DefaultNewsImage from "../assets/news.jpg";
 
 const CardElement = ({ newsList }) => {
   return (
-    <div className="d-flex gap-2 flex-wrap m-4 justify-content-left">
+    <div className="d-flex gap-4 flex-wrap m-4">
       {newsList.map((news, idx) =>
         news.title && news.description && news.urlToImage && news.url ? (
-          <div key={idx} className="d-flex justify-content-wrap">
+          <div key={idx} className="">
             <Card
               style={{
                 maxWidth: "28rem",
